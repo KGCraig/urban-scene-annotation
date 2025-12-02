@@ -1,30 +1,30 @@
 # Urban Scene Annotation
 
-**Goal:** Provide high-quality annotations for an object detection computer vision model. Accurate, consistent and high-quality data annotation is crucial for AI models to accurately make predictions and classifications on seen objects. Annotating objects in images helps models learn how to detect objects in the real-world and through images.
+**Goal:** Provide high-quality annotations for an object detection computer vision model. Accurate, consistent, and high-quality data annotation is crucial for AI models to make predictions and classifications on seen objects as accurately as possible. Annotating objects in images helps models learn how to detect objects in the real world and through images.
 
 ## Background
 
-This project focuses on creating a robust dataset for training AI models to detect various objects in an urban environment. Four types of annotation are applied:
+This project focuses on creating a robust dataset for training AI models to classify various objects found in an urban environment. Four types of annotation are applied:
 
 - Cars and pedestrians are labeled using **instance segmentation**, so models can distinguish between individual instances.
 
 - Road surfaces are labeled using **semantic segmentation** because models only need to classify every pixel as a road or not a road, and individual road segments do not require a unique ID.
 
-- Traffic signs use **bounding boxes** because they are typically small, and the model mainly needs to know location and class of signs. This also increases the speed and efficiency of annotating an image.
+- Traffic signs use **bounding boxes** because they are typically small, and the model mainly needs to know the location and class of signs. This also increases the speed and efficiency of annotating an image.
 
-- All images have one **image-wide classification tag**. This is so the model know how objects look in certain environments, lighting and weather conditions. These tags are `Daytime_Clear`, `Daytime_Cloudy`, `Daytime_Rainy`, `Nighttime_Clear`, `Nighttime_Cloudy` and `Nighttime_Rainy`.
+- All images have one **image-wide classification tag**. This is so the model knows how objects look in certain environments, lighting, and weather conditions. These tags are `Daytime_Clear`, `Daytime_Cloudy`, `Daytime_Rainy`, `Nighttime_Clear`, `Nighttime_Cloudy`, and `Nighttime_Rainy`.
 
-By using multiple types of annotation, I cover a wide variety of use cases and create a comprehensive dataset. In providing a high-quality and diverse dataset, AI models can be trained to produce higher accuracy results when detecting various objects found in urban scenes.
+By using multiple types of labeling, I cover a wide variety of use cases and create a comprehensive dataset. In providing a high-quality and diverse dataset, AI models can be trained to produce high-accuracy results when detecting various objects found in urban scenes.
 
 ## Dataset Description
 
-The dataset consists of 20 images downloaded from the royalty-free website Unsplash. The images represent a mixture of daytime and nighttime scenes, as well as different weather conditions, such as cloudy and rainy. The primary objects of interest are cars, pedestrians, road surfaces and traffic signs.
+The dataset consists of 20 images downloaded from the royalty-free website Unsplash. The images represent a mixture of daytime and nighttime scenes, as well as different weather conditions, such as cloudy and rainy. The primary objects of interest are cars, pedestrians, road surfaces, and traffic signs.
 
 ## Annotation Methodology
 
-I utilized the CVAT.ai website for the annotation project. Each car and pedestrian were labeled using the mask tool and use complimentary color-coding (pedestrians are green, cars are red). Road surfaces were labeled using the mask tool and are colored indigo to be visible under labeled cars and pedestrians. Traffic signs are labeled with bounding boxes that are rotated to fit the sign as tightly as possible.
+I utilized the CVAT.ai website for the annotation project. Each car and pedestrian was labeled using the mask tool and use complementary color-coding (pedestrians are green, cars are red). Road surfaces were labeled using the mask tool and are colored indigo to be visible under labeled cars and pedestrians. Traffic signs are labeled with bounding boxes that are rotated to fit the sign as tightly as possible.
 
-A tight approach was used for mask annotations to minimize over-segmentation. Masks typically started off with the polygon tool to cover outlines as tightly as possible, while the brush tool was used to fill in or remove small mistakes.
+A tight approach was used for mask annotations to minimize over-segmentation. Masks typically began with the polygon tool to cover outlines as tightly as possible, while the brush tool was used to fill in or remove small mistakes.
 
 Strict guidelines were created and adhered to ensure high-quality annotations and to remove ambiguity and guesswork from the project. Each image was double-checked against the guidelines after completion to ensure annotation quality.
 
@@ -34,7 +34,7 @@ Strict guidelines were created and adhered to ensure high-quality annotations an
 
 Guidelines can be found here: [Guidelines.pdf](guidelines.pdf)
 
-Since CVAT.ai lacked a way to measure the size of masks, I developed a QA workaround by using a temporary bounding box to measure adherence to minimum size guidelines. This bounding box was wrapped around an object that appeared very small. If the object did not pass size guidelines, they were not annotated.
+Since CVAT.ai lacked a way to measure the size of masks, I developed a QA workaround by using a temporary bounding box to measure adherence to minimum size guidelines. This bounding box was wrapped around an object that appeared very small. If the object did not pass size guidelines, it was not annotated.
 
 After the annotations were complete, they were exported from CVAT.ai into the **CVAT for Images 1.1 (XML)** format to be processed in Python to gather statistics.
 
