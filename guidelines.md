@@ -4,12 +4,12 @@
 
 ## 1) Class Definitions
 
-|Class Name|Class Definition|Annotation Type|
-|---|---|---|
-|`CAR`|Any sedan, truck, van, or SUV.|Instance Segmentation (Mask)|
-|`PEDESTRIAN`|Any human present (adults/teenagers/children).|Instance Segmentation (Mask)|
-|`ROAD_SURFACE`|The drivable portion of the street, curb to curb.|Semantic Segmentation (Mask)|
-|`TRAFFIC_SIGN`|Any permanent street sign.|Bounding Box|
+|Class Name|Class Definition|Annotation Type|Attributes|
+|---|---|---| ---|
+|`CAR`|Any sedan, truck, van, or SUV.|Instance Segmentation (Mask)|`occluded`: yes / no, `truncated`: yes / no |
+|`PEDESTRIAN`|Any human present (adults/teenagers/children).|Instance Segmentation (Mask)| `occluded`: yes / no, `truncated`: yes / no |
+|`ROAD_SURFACE`|The drivable portion of the street, curb to curb.|Semantic Segmentation (Mask)| None |
+|`TRAFFIC_SIGN`|Any permanent street sign.|Bounding Box| `occluded`: yes / no, `truncated`: yes / no |
 
 ## 2) Segmentation Rules (for Masks and Polygons)
 
@@ -21,7 +21,7 @@ Masks must be pixel-perfect, or as close to pixel-perfect as possible. No backgr
 
 ### **Occlusion:**
 
-If an object is partially blocked or hidden (occluded), annotate the visible portions only.
+If an object is partially blocked or hidden (occluded), or truncated (cut off the by frame), annotate the visible portions only.
   
 - **EXCEPTION:** If a `PEDESTRIAN` is partially occluded by a `CAR`, use your best judgment to draw the boundary of the pedestrian's body *as if* the car wasn't there.
 
@@ -33,11 +33,17 @@ DO NOT annotate any reflections or shadows. Only annotate the physical object.
 
 ### **Attributes:**
 
-Every annotation must have a `Visibility` attribute:
+`CAR`, `PEDESTRIAN`, and `TRAFFIC_SIGN` annotations must have `occluded` and `truncated` attributes:
 
-- `Visibility` **Attribute Rules:**
-  - `Full` (Object is completely clear)
-  - `Partial_Occlusion` (Partially hidden by another object/edge of frame)
+- `occluded` **Attribute Rules:**
+  - `no` (Object is completely clear)
+  - `yes` (Object is partially hidden by another object)
+
+- `truncated` **Attribute Rules:**
+  - `no` (Object is not cut off by the frame)
+  - `yes` (Object is partially cut off by the frame)
+
+**Note:** `ROAD_SURFACE` *does not* have a occlusion or truncation attributes.
 
 ### **Ambiguity and Clarity:**
 
