@@ -116,28 +116,26 @@ Note the application of **instance segmentation** on occluded cars, and the **ti
 ## Data Deliverable (.xml)
 
 ```xml
-  <image id="0" name="adam-borkowski-NyPV7oHdlSo-unsplash.jpg" subset="default" task_id="1757241" width="5720" height="7150">
-    <mask label="PEDESTRIAN" source="manual" occluded="1" rle="77, 10, 110, 24, 97, 29, 96, 30, 95, 32, 89, 37, 88, 39, 86, 41, 83, 44, 81, 45, 80, 47, 78, 49, 76, 51, 74, 52, 72, 54, 71, 56, 69, 57, 68, 59, 66, ..." left="4773" top="3680" width="126" height="621" z_order="0">
-      <attribute name="Visibility">Partial_Occlusion</attribute>
-    </mask>
- ...
-    <box label="TRAFFIC_SIGN" source="manual" occluded="0" xtl="4216.52" ytl="3382.89" xbr="4396.81" ybr="3689.65" z_order="0">
-      <attribute name="Visibility">Full</attribute>
-    </box>
- ...
-    <mask label="ROAD_SURFACE" source="manual" occluded="0" rle="1703, 3, 1, 1, 5707, 9, 5704, 12, 5701, 14, 5704, 12, 5708, 8, 5711, 4, 12167, 2, 5717, 4, 5714, 7, 5711, 10, 5708, 13, 4915, 6, 784, 15, 4908, ..." left="0" top="4334" width="5720" height="2816" z_order="0">
-      <attribute name="Visibility">Full</attribute>
-    </mask>
- ...
-    <mask label="CAR" source="manual" occluded="1" rle="877, 2, 1632, 6, 1628, 7, 1627, 9, 1625, 10, 1624, 11, 1623, 12, 1623, 13, 1621, ..." left="2346" top="3475" width="1634" height="1208" z_order="0">
-      <attribute name="Visibility">Partial_Occlusion</attribute>
-    </mask>
- ...
-      <attribute name="Visibility">Full</attribute>
-    </mask>
-    <tag label="Daytime_Rainy" source="manual">
-    </tag>
-  </image>
+<image id="0" name="adam-borkowski-NyPV7oHdlSo-unsplash.jpg" subset="default" task_id="1757241" width="5720" height="7150">
+    <mask label="PEDESTRIAN" source="manual" occluded="0" rle="119, 11, 248, 29, 230, 38, 220, 42, 217, 45, 214, 48, 210, 52, 207, 55, 204, 58, 200, 62, 197, 65, 194, 68, 191, 71, 190, 72, 188, 74, 187, 75, 185, 77, 184, 78, 182, 80, 181, 81, 179, 83, 178, 84, 176, 86, 175,  100, 81, 62, 19, 98, 82, 63, 19, 97, 81, 64, 19, 97, 81, 64, 20, ..." left="4562" top="3653" width="261" height="688" z_order="0">
+      <attribute name="occluded">no</attribute>
+      <attribute name="truncated">no</attribute>
+    </mask>
+    <mask label="CAR" source="manual" occluded="1" rle="877, 2, 1632, 6, 1628, 7, 1627, 9, 1625, 10, 1624, 11, 1623, 12, 1623, 13, 1621, 14, 1620, 15, 1619, 15, 1619, 16, 1618, 17, 1617, 17, 1617, 18, 1616, ..." left="2346" top="3475" width="1634" height="1208" z_order="0">
+      <attribute name="occluded">yes</attribute>
+      <attribute name="truncated">no</attribute>
+    </mask>
+
+    ...
+
+    <box label="TRAFFIC_SIGN" source="manual" occluded="0" xtl="4224.60" ytl="3224.13" xbr="4388.74" ybr="3385.58" z_order="0">
+      <attribute name="occluded">no</attribute>
+      <attribute name="truncated">no</attribute>
+    </box>
+    <mask label="ROAD_SURFACE" source="manual" occluded="0" rle="1703, 3, 1, 1, 5707, 9, 5704, 12, 5701, 14, 5704, 12, 5708, 8, 5711, 4, 12167, 2, 5717, 4, 5714, 7, 5711, 10, 5708, 13, 4915, 6, 784, 15, 590, 125, 5613, 99, 5640, 70, 5668, 43, 5696, 15, ..." left="0" top="4334" width="5720" height="2816" z_order="0">
+    </mask>
+
+    ...
 ```
 
 Please view the full annotations file here: [annotations.xml](annotations.xml)
